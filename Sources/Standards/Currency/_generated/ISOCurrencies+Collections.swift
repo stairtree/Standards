@@ -11,6 +11,10 @@
 //
 //===----------------------------------------------------------------------===//
 
+//===----------------------------------------------------------------------===//
+//      Automatically generated with `swift run update`. Do not modify.       //
+//===----------------------------------------------------------------------===//
+
 extension ISOCurrencies {
     /// 166 `ISOCurrencyInfo`s
     public static let all: [ISOCurrencyInfo] = [
