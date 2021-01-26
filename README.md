@@ -45,7 +45,7 @@ To integrate the package:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/stairtree/Standards.git", .branch("main"))
+    .package(url: "https://github.com/stairtree/Standards.git", from: "1.0.1")
 ]
 ```
 

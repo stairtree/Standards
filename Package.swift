@@ -26,7 +26,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.0.0"),
-        .package(url: "https://github.com/MaxDesiatov/XMLCoder.git", from: "0.11.1"),
+        .package(url: "https://github.com/MaxDesiatov/XMLCoder.git", from: "0.12.0"),
     ],
     targets: [
         .target(
