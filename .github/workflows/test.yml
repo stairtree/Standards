@@ -82,5 +82,8 @@ jobs:
           Copy-Item "$env:SDKROOT\usr\share\winsdk.modulemap" -destination "$env:UniversalCRTSdkDir\Include\$env:UCRTVersion\um\module.modulemap"
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Workflow debug
+        run: dir $env:SDKROOT\usr\include
       - name: Run tests
-        run: swift test --enable-test-discovery
+        run: swift test -v
+
