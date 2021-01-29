@@ -131,8 +131,6 @@ Should only be used to handle legacy IT systems or where this standard is requir
 
 Run `swift run update` at the root of the package to parse all sources and regenerate the various files.
 
-_**Note**: No releases have yet been tagged._
-
 ## Copyright
 
 All data is owned by their respective sources. Only publicly available data is used.

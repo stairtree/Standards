@@ -17,11 +17,7 @@
 /// Note that the names are in English and not standardized. Even their meaning is not the same everywhere.
 /// i.e. Central America is not defined to be part of NA or SA explicitly, and depending on the source, countries' assignment varies.
 ///
-/// [1] groups South and Central America, while [2] splits Central America between South America and North America
-///
-/// See:
-/// - [1] https://planetarynames.wr.usgs.gov/Abbreviations
-/// - [2] https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_by_continent_(data_file)
+/// [USGS](https://planetarynames.wr.usgs.gov/Abbreviations) groups South and Central America, while [Wikipedia](https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_by_continent_(data_file)) splits Central America between South America and North America
 public struct ContinentInfo: Hashable, Equatable {
     public let code: String
     public let name: String
