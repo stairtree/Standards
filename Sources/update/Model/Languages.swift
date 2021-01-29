@@ -26,10 +26,10 @@ struct LanguageModel {
 }
 
 extension LanguageModel: SourceCodeEncodable {
-    var stableName: String { self.isoName }
-    var instanceName: String { self.shortName.toTypeName() }
+    var instanceName: String { self.code1.uppercased() }
     static var typeName: String { "ISOLanguageInfo" }
     static var collectionTypeName: String { "ISOLanguages" }
+    var aliases: Set<String> { [self.shortName.toTypeName()] }
     func toSourceCode() throws -> String {
         """
             /// \(self.isoName)
@@ -50,6 +50,7 @@ extension LanguageModel: SourceCodeEncodable {
                 code2B: "\(self.code2B)",
                 code3: "\(self.code3)"
             )
+            
         """
     }
 }

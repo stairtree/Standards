@@ -10,11 +10,11 @@ final class CurrencyTests: XCTestCase {
 
     func testGetCurrencyByName() {
         let currency = ISOCurrencies.find(byName: "Euro")
-        XCTAssertEqual(currency, .Euro)
+        XCTAssertEqual(currency, .EUR)
     }
 
     func testCurrencySymbol() {
-        let currency = ISOCurrencyInfo.Euro
+        let currency = ISOCurrencyInfo.EUR
         XCTAssertEqual(currency.symbol, "€")
     }
 
@@ -72,7 +72,7 @@ final class CurrencyTests: XCTestCase {
     // MARK: Encoding
 
     func testCurrencyToJSONAsCode() throws {
-        let currency = [ISOCurrencyInfo.Euro]
+        let currency = [ISOCurrencyInfo.EUR]
         let encoder = JSONEncoder()
         encoder.userInfo[.currencyEncodingStrategy] = CurrencyEncodingStrategy.code
         let result = try encoder.encode(currency)
@@ -80,14 +80,14 @@ final class CurrencyTests: XCTestCase {
     }
 
     func testCurrencyToJSONAsCodeByDefault() throws {
-        let currency = [ISOCurrencyInfo.Euro]
+        let currency = [ISOCurrencyInfo.EUR]
         let encoder = JSONEncoder()
         let result = try encoder.encode(currency)
         XCTAssertEqual(String(data: result, encoding: .utf8), "[\"EUR\"]")
     }
 
     func testCurrencyToJSONAsNumeric() throws {
-        let currency = [ISOCurrencyInfo.Euro]
+        let currency = [ISOCurrencyInfo.EUR]
         let encoder = JSONEncoder()
         encoder.userInfo[.currencyEncodingStrategy] = CurrencyEncodingStrategy.numeric
         let result = try encoder.encode(currency)
@@ -100,14 +100,14 @@ final class CurrencyTests: XCTestCase {
         let json = "[\"EUR\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOCurrencyInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOCurrencyInfo.Euro])
+        XCTAssertEqual(result, [ISOCurrencyInfo.EUR])
     }
 
     func testCurrencyFromJSONAsNumeric() throws {
         let json = "[\"978\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOCurrencyInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOCurrencyInfo.Euro])
+        XCTAssertEqual(result, [ISOCurrencyInfo.EUR])
     }
 
     func testInvalidCurrencyFromJSONNumericString() throws {
