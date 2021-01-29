@@ -23,10 +23,10 @@ struct CurrencyModel {
 }
 
 extension CurrencyModel: SourceCodeEncodable {
-    var stableName: String { self.name }
-    var instanceName: String { self.name.toTypeName() }
+    var instanceName: String { self.code.uppercased() }
     static var typeName: String { "ISOCurrencyInfo" }
     static var collectionTypeName: String { "ISOCurrencies" }
+    var aliases: Set<String> { [self.name.toTypeName()] }
     func toSourceCode() throws -> String {
         """
             /// \(self.name)
@@ -42,6 +42,7 @@ extension CurrencyModel: SourceCodeEncodable {
                 minorUnit: \(self.minorUnit),
                 used: [\(self.usedInLinks.sorted().map { "\"\($0)\"" }.joined(separator: ", "))]
             )
+            
         """
     }
 }

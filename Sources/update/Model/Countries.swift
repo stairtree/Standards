@@ -27,10 +27,10 @@ struct CountryModel {
 }
 
 extension CountryModel: SourceCodeEncodable {
-    var stableName: String { self.unDesignation }
-    var instanceName: String { self.wikipediaName.toTypeName() }
+    var instanceName: String { self.alpha2.uppercased() }
     static var typeName: String { "ISOCountryInfo" }
     static var collectionTypeName: String { "ISOCountries" }
+    var aliases: Set<String> { [self.wikipediaName.toTypeName()] }
     func toSourceCode() throws -> String {
         """
             /// \(self.unDesignation)
@@ -47,6 +47,7 @@ extension CountryModel: SourceCodeEncodable {
                 alpha3: "\(self.alpha3)",
                 continents: [\(self.continents.map { "\"\($0)\"" }.sorted().joined(separator: ", "))]
             )
+            
         """
     }
 }

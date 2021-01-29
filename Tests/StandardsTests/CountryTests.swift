@@ -46,7 +46,7 @@ final class CountryTests: XCTestCase {
 //    }
 
     func testGetContinentInfoFromCountry() {
-        let country = ISOCountryInfo.Austria
+        let country = ISOCountryInfo.AT
         XCTAssertEqual(country.continentInfo, [.Europe])
     }
 
@@ -57,7 +57,7 @@ final class CountryTests: XCTestCase {
 
     func testFindCountryByNumeric() {
         let numeric = "040"
-        XCTAssertEqual(ISOCountries.find(numeric: numeric), .Austria)
+        XCTAssertEqual(ISOCountries.find(numeric: numeric), .AT)
     }
 
     func testAllCountryAlpha2CodesAreUnique() {
@@ -119,7 +119,7 @@ final class CountryTests: XCTestCase {
     // MARK: Encoding
 
     func testCountryToJSONAsAlpha2() throws {
-        let country = [ISOCountryInfo.Austria]
+        let country = [ISOCountryInfo.AT]
         let encoder = JSONEncoder()
         encoder.userInfo[.countryEncodingStrategy] = CountryEncodingStrategy.alpha2
         let result = try encoder.encode(country)
@@ -127,14 +127,14 @@ final class CountryTests: XCTestCase {
     }
 
     func testCountryToJSONAsAlpha2ByDefault() throws {
-        let country = [ISOCountryInfo.Austria]
+        let country = [ISOCountryInfo.AT]
         let encoder = JSONEncoder()
         let result = try encoder.encode(country)
         XCTAssertEqual(String(data: result, encoding: .utf8), "[\"AT\"]")
     }
 
     func testCountryToJSONAsAlpha3() throws {
-        let country = [ISOCountryInfo.Austria]
+        let country = [ISOCountryInfo.AT]
         let encoder = JSONEncoder()
         encoder.userInfo[.countryEncodingStrategy] = CountryEncodingStrategy.alpha3
         let result = try encoder.encode(country)
@@ -142,7 +142,7 @@ final class CountryTests: XCTestCase {
     }
 
     func testCountryToJSONAsNumeric() throws {
-        let country = [ISOCountryInfo.Austria]
+        let country = [ISOCountryInfo.AT]
         let encoder = JSONEncoder()
         encoder.userInfo[.countryEncodingStrategy] = CountryEncodingStrategy.numeric
         let result = try encoder.encode(country)
@@ -150,7 +150,7 @@ final class CountryTests: XCTestCase {
     }
 
     func testCountryToJSONAsName() throws {
-        let country = [ISOCountryInfo.Austria]
+        let country = [ISOCountryInfo.AT]
         let encoder = JSONEncoder()
         encoder.userInfo[.countryEncodingStrategy] = CountryEncodingStrategy.name
         let result = try encoder.encode(country)
@@ -163,28 +163,28 @@ final class CountryTests: XCTestCase {
         let json = "[\"AT\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOCountryInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOCountryInfo.Austria])
+        XCTAssertEqual(result, [ISOCountryInfo.AT])
     }
 
     func testCountryFromJSONAsAlpha3() throws {
         let json = "[\"AUT\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOCountryInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOCountryInfo.Austria])
+        XCTAssertEqual(result, [ISOCountryInfo.AT])
     }
 
     func testCountryFromJSONAsNumeric() throws {
         let json = "[\"040\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOCountryInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOCountryInfo.Austria])
+        XCTAssertEqual(result, [ISOCountryInfo.AT])
     }
 
     func testCountryFromJSONAsName() throws {
         let json = "[\"Austria\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOCountryInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOCountryInfo.Austria])
+        XCTAssertEqual(result, [ISOCountryInfo.AT])
     }
 
     func testInvalidCountryFromJSONString() throws {

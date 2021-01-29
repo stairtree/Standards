@@ -99,7 +99,7 @@ final class LanguageTests: XCTestCase {
     // MARK: Encoding
 
     func testLanguageToJSONAsCode1() throws {
-        let language = [ISOLanguageInfo.German]
+        let language = [ISOLanguageInfo.DE]
         let encoder = JSONEncoder()
         encoder.userInfo[.languageEncodingStrategy] = LanguageEncodingStrategy.code1
         let result = try encoder.encode(language)
@@ -107,14 +107,14 @@ final class LanguageTests: XCTestCase {
     }
 
     func testLanguageToJSONAsCode1ByDefault() throws {
-        let language = [ISOLanguageInfo.German]
+        let language = [ISOLanguageInfo.DE]
         let encoder = JSONEncoder()
         let result = try encoder.encode(language)
         XCTAssertEqual(String(data: result, encoding: .utf8), "[\"de\"]")
     }
 
     func testLanguageToJSONAsCode2B() throws {
-        let language = [ISOLanguageInfo.German]
+        let language = [ISOLanguageInfo.DE]
         let encoder = JSONEncoder()
         encoder.userInfo[.languageEncodingStrategy] = LanguageEncodingStrategy.code2B
         let result = try encoder.encode(language)
@@ -122,7 +122,7 @@ final class LanguageTests: XCTestCase {
     }
 
     func testLanguageToJSONAsCode2T() throws {
-        let language = [ISOLanguageInfo.German]
+        let language = [ISOLanguageInfo.DE]
         let encoder = JSONEncoder()
         encoder.userInfo[.languageEncodingStrategy] = LanguageEncodingStrategy.code2T
         let result = try encoder.encode(language)
@@ -130,7 +130,7 @@ final class LanguageTests: XCTestCase {
     }
 
     func testLanguageToJSONAsCode3() throws {
-        let language = [ISOLanguageInfo.German]
+        let language = [ISOLanguageInfo.DE]
         let encoder = JSONEncoder()
         encoder.userInfo[.languageEncodingStrategy] = LanguageEncodingStrategy.code3
         let result = try encoder.encode(language)
@@ -138,7 +138,7 @@ final class LanguageTests: XCTestCase {
     }
 
     func testLanguageToJSONAsName() throws {
-        let language = [ISOLanguageInfo.German]
+        let language = [ISOLanguageInfo.DE]
         let encoder = JSONEncoder()
         encoder.userInfo[.languageEncodingStrategy] = LanguageEncodingStrategy.name
         let result = try encoder.encode(language)
@@ -151,35 +151,35 @@ final class LanguageTests: XCTestCase {
         let json = "[\"de\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOLanguageInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOLanguageInfo.German])
+        XCTAssertEqual(result, [ISOLanguageInfo.DE])
     }
 
     func testLanguageFromJSONAsCode2B() throws {
         let json = "[\"ger\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOLanguageInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOLanguageInfo.German])
+        XCTAssertEqual(result, [ISOLanguageInfo.DE])
     }
 
     func testLanguageFromJSONAsCode2T() throws {
         let json = "[\"deu\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOLanguageInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOLanguageInfo.German])
+        XCTAssertEqual(result, [ISOLanguageInfo.DE])
     }
 
     func testLanguageFromJSONAsCode3() throws {
         let json = "[\"deu\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOLanguageInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOLanguageInfo.German])
+        XCTAssertEqual(result, [ISOLanguageInfo.DE])
     }
 
     func testLanguageFromJSONAsName() throws {
         let json = "[\"German\"]"
         let decoder = JSONDecoder()
         let result = try decoder.decode([ISOLanguageInfo].self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(result, [ISOLanguageInfo.German])
+        XCTAssertEqual(result, [ISOLanguageInfo.DE])
     }
 
     func testInvalidLanguageFromJSONString() throws {

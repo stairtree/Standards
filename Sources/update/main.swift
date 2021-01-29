@@ -23,16 +23,22 @@ func run() throws {
     try countries.write(to: "\(base)Country/\(gen)/ISOCountryInfo+AllCountries.swift")
     try CollectionTemplate([(name: "all", countries.data)])
         .write(to: "\(base)Country/\(gen)/ISOCountries+Collections.swift")
+    try AliasTemplate(countries.data)
+        .write(to: "\(base)Country/\(gen)/ISOCountries+Aliases.swift")
 
     let currencies = DefinitionTemplate(try ISO.currencies())
     try currencies.write(to: "\(base)Currency/\(gen)/ISOCurrencyInfo+AllCurrencies.swift")
     try CollectionTemplate([(name: "all", currencies.data)])
         .write(to: "\(base)Currency/\(gen)/ISOCurrencies+Collections.swift")
+    try AliasTemplate(currencies.data)
+        .write(to: "\(base)Currency/\(gen)/ISOCurrencies+Aliases.swift")
 
     let languages = DefinitionTemplate(try Wikipedia.languages())
     try languages.write(to: "\(base)Language/\(gen)/ISOLanguageInfo+AllLanguages.swift")
     try CollectionTemplate([(name: "all", languages.data)])
         .write(to: "\(base)Language/\(gen)/ISOLanguages+Collections.swift")
+    try AliasTemplate(languages.data)
+        .write(to: "\(base)Language/\(gen)/ISOLanguages+Aliases.swift")
 }
 
 do {
